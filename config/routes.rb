@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root "/games"
+root "games#index"
 
 resources :users, :games, :players
 
