@@ -19,10 +19,10 @@
 
 Team lead:
 
-  Michael Bozza 
+  - Michael Bozza 
   
 Collaborators:
   
-    Sheldon Martin
-    Jordan Coutu 
+  - Sheldon Martin
+  - Jordan Coutu 
   
