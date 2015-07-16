@@ -17,5 +17,12 @@
 
 # Roles:
 
+Team lead:
+
+  Michael Bozza 
   
+Collaborators:
+  
+    Sheldon Martin
+    Jordan Coutu 
   
