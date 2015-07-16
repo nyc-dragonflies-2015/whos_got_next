@@ -14,6 +14,13 @@ describe User do
   it { should validate_presence_of(:last_name) }
 
   it { should validate_length_of(:password).is_at_least(6) }
-  it { should validate_uniqueness_of(:username) }
+
+  describe User do
+    describe 'uniqueness validations' do
+      subject { User.new(first_name: 'John', last_name: 'Doe', email: 'john@example.com', phone_number: '555-555-5555', password: '123456', username: 'johndoe') }
+      it { should validate_uniqueness_of(:username) }
+      it { should validate_uniqueness_of(:email) }
+    end
+  end
 
 end

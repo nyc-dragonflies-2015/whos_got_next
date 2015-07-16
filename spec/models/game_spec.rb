@@ -7,4 +7,5 @@ describe Game do
   it { should belong_to(:owner) }
   it { should have_many(:players) }
   it { should have_many(:users) }
+
 end

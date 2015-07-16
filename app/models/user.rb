@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   has_many :games, through: :players
 
   validates_presence_of :email, :username, :password, :first_name, :last_name
-  validates_length_of :password, minimum:6
-  validates_uniqueness_of :username
+  validates_length_of :password, minimum: 6
+  validates_uniqueness_of :username, :email
 end
