@@ -28,4 +28,4 @@ Collaborators:
   
 # Schema
 
-  ![schema](/images/schema_final.png "schema")
+  ![schema](/images/schema_design.png "schema")
