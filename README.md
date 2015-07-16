@@ -26,6 +26,6 @@ Collaborators:
   - Sheldon Martin
   - Jordan Coutu 
   
-# Schema
+# Schema:
 
   ![schema](/images/schema_design.png "schema")
