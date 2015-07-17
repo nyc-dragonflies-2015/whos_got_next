@@ -3,10 +3,7 @@ Rails.application.routes.draw do
 root "games#index"
 
 resources :games
-
-
-
-# resources :users, :games, :players
+resources :users, only: [:new, :create]
 
 get "/login" => "sessions#new"
 post "/login" => "sessions#create"
