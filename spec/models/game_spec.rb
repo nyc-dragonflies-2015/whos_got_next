@@ -8,4 +8,8 @@ describe Game do
   it { should have_many(:players) }
   it { should have_many(:users) }
 
+  it { should validate_presence_of(:sport) }
+  it { should validate_presence_of(:start_time) }
+  it { should validate_presence_of(:location) }
+
 end
