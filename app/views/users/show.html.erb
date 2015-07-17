@@ -7,4 +7,7 @@
   <%= form_for @user, url: edit_user_path(@user), method: :get do |f| %>
     <%= f.submit 'Edit' %>
   <% end %>
+  <%= form_for @user, url: user_path(@user), method: :delete do |f| %>
+    <%= f.submit 'Delete' %>
+  <% end %>
 </div>
