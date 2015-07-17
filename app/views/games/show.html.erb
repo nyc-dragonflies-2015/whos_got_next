@@ -1,0 +1,6 @@
+<h2><%= @game.sport %></h2>
+<div><%= @game.start_time %></div>
+<div><%= @game.end_time %></div>
+<div><%= link_to @game.location %></div>
+
+<%= link_to "Edit Your Game", edit_game_path(@game)%>
