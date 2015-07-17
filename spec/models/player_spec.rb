@@ -7,17 +7,8 @@ describe Player do
   let(:player) { Player.create(user_id: john.id, game_id: game.id) }
   let(:player2) { Player.create(user_id: jane.id, game_id: game.id, attending: true) }
 
-  describe 'game' do
-    it 'should belong to a game' do
-      expect(player).to respond_to :game
-    end
-  end
-
-  describe 'user' do
-    it 'should have many games' do
-      expect(player).to respond_to :user
-    end
-  end
+  it { should belong_to(:user) }
+  it { should belong_to(:game) }
 
   describe 'attending' do
     it 'should be able to attend a game' do
