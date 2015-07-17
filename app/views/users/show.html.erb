@@ -2,4 +2,9 @@
 <div>Name: <%= @user.full_name %></div>
 <div>Username: <%= @user.username %></div>
 <div>Email: <%= @user.email %></div>
-<div>Phone_Number: <%= @user.phone_number %></div>
+<div>Phone Number: <%= @user.phone_number %></div>
+<div>
+  <%= form_for @user, url: edit_user_path(@user), method: :get do |f| %>
+    <%= f.submit 'Edit' %>
+  <% end %>
+</div>
