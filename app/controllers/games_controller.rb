@@ -47,4 +47,5 @@ private
   def game_params
     params.require(:game).permit(:sport, :start_time, :end_time, :location)
   end
+
 end
