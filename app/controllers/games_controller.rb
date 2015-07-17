@@ -38,6 +38,7 @@ class GamesController < ApplicationController
      @game = Game.find_by(id: params[:id])
      @game.destroy
      flash[:notice] = "Game successfully destroyed"
+     redirect_to root_path
   end
 
 private
