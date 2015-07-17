@@ -21,15 +21,22 @@ class GamesController < ApplicationController
   end
 
   def edit
-
+    @game = Game.find_by(id: params[:id])
   end
 
   def update
-
+    @game = Game.find_by(id: params[:id])
+    @game.update(game_params)
+    if @game.save
+      redirect_to game_path(game)
+    else
+      render :edit
   end
 
   def destroy
-
+     @game = Game.find_by(id: params[:id])
+     @game.destroy
+     flash[:notice] = "Game successfully destroyed"
   end
 
 private
