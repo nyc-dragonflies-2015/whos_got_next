@@ -1,0 +1,13 @@
+<h1>Profile</h1>
+<div>Name: <%= @user.full_name %></div>
+<div>Username: <%= @user.username %></div>
+<div>Email: <%= @user.email %></div>
+<div>Phone Number: <%= @user.phone_number %></div>
+<div>
+  <%= form_for @user, url: edit_user_path(@user), method: :get do |f| %>
+    <%= f.submit 'Edit' %>
+  <% end %>
+  <%= form_for @user, url: user_path(@user), method: :delete do |f| %>
+    <%= f.submit 'Delete' %>
+  <% end %>
+</div>
