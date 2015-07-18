@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     else
       username = "account#{User.last.id + 1}"
 
-      return User.create(first_name: "temporary", last_name: "account", username: username, password: "123456", email: "#{username}@example.com", phone_number: "000-000-0000")
+      return User.create(first_name: "temporary", last_name: "account", username: username, password: "123456", email: email, phone_number: "000-000-0000")
     end
   end
 
