@@ -12,7 +12,40 @@ class User < ActiveRecord::Base
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
-  def self.get_or_create_user_accounts
+  def self.find_or_create_user_accounts(username_or_email_list)
+    indentifiers = username_or_email_list.split(',')
+    result = []
 
+
+    indentifiers.each do |indentifier|
+      indentifier.strip!
+
+      if indentifier.include?('@')
+        result << find_or_create_email(indentifier)
+      else
+        user = find_username(indentifier)
+        result << user unless user.nil?
+      end
+    end
+
+    return result
+  end
+
+  private
+
+  def self.find_or_create_email(email)
+    user = User.find_by(email: email)
+
+    if user
+      return user
+    else
+      username = "account#{User.last.id + 1}"
+
+      return User.create(first_name: "temporary", last_name: "account", username: username, password: "123456", email: "#{username}@example.com", phone_number: "000-000-0000")
+    end
+  end
+
+  def self.find_username(username)
+    User.find_by(username: username)
   end
 end
