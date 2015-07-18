@@ -4,4 +4,8 @@ class Game < ActiveRecord::Base
   has_many :users, through: :players
 
   validates_presence_of :sport, :start_time, :location
+
+  def still_active?
+    self.start_time > Time.now
+  end
 end

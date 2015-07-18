@@ -1,6 +1,6 @@
 <h2><%= @game.sport %></h2>
-  <div><%= @game.start_time %></div>
-  <div><%= @game.end_time %></div>
+  <div>Starts: <%= local_time(@game.start_time) %></div>
+  <div>Ends: <%= local_time(@game.end_time) %></div>
   <div><%= link_to @game.location %></div>
   <div>Players Attending: <%= Player.attending_count(@game.id)%></div>
   Players Invited: <% @game.players.each do |p| %>
