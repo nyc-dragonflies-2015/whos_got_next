@@ -1,8 +1,10 @@
 <h2>Active Games</h2>
 
 <% @games.each do |g| %>
-<div><%= g.sport %></div>
-<div><%= link_to g.location, game_path(g) %></div>
+  <% if g.still_active? %>
+    <div><%= g.sport %></div>
+    <div><%= link_to g.location, game_path(g) %></div>
+  <%end%>
 <%end%>
 
 <% if !is_authenticated? %>
