@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 # feature "signup" do
 #   scenario "should sign up the user" do
 #     visit root_path
