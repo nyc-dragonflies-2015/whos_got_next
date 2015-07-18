@@ -12,6 +12,7 @@
     <ul>
       <li><%= link_to 'Home', games_path%></li>
     <% if is_authenticated? %>
+      <li><%= link_to 'Your Profile', user_path(current_user.id)%></li>
       <li><%= link_to 'Create Game', new_game_path%></li>
       <li><%= link_to 'Edit Account', edit_user_path(current_user.id)%></li>
       <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
