@@ -1,11 +1,13 @@
  <%= form_for @game do |f| %>
-  <%= f.label :sport %>
-  <%= f.text_field :sport %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.label :start_time %>
-  <%= f.datetime_field :start_time %>
-  <%= f.label :end_time %>
-  <%= f.datetime_field :end_time %>
-  <%= f.submit "Create Game" %>
+  <div><%= f.label :sport %></div>
+  <div><%= f.text_field :sport %></div>
+  <div><%= f.label :location %></div>
+  <div><%= f.text_field :location %></div>
+  <div><%= f.label :start_time %></div>
+  <div><%= f.datetime_field :start_time %></div>
+  <div><%= f.label :end_time %></div>
+  <div><%= f.datetime_field :end_time %>
+  <div><%= f.label :invite_players %></div>
+  <div><%= f.text_field :end_time %></div>
+  <div><%= f.submit "Create Game" %></div>
 <% end %>
