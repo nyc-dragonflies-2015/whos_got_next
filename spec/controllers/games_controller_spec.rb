@@ -67,20 +67,14 @@ describe GamesController do
     end
   end
 
-  #   context "with valid attributes" do
-  #     it "does not save the new user to the database" do
-  #       expect {
-  #         post :create, user: user_attributes_missing_username
-  #       }.to_not change(User, :count)
-  #     end
+  context "without valid attributes" do
+    it "does not save the new game to the database" do
+      expect {
+        post :create, game: game_attributes_missing_sport
+      }.to_not change(Game, :count)
+    end
+  end
 
-  #     it "does not save the new user to the database" do
-  #       expect {
-  #         post :create, user: user_attributes_invalid_password
-  #       }.to_not change(User, :count)
-  #     end
-  #   end
-  # end
 
   # describe "PATCH #update" do
   #   context "valid attributes" do
