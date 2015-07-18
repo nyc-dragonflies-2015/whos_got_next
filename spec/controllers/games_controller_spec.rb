@@ -75,60 +75,60 @@ describe GamesController do
     end
   end
 
+  describe "PATCH #update" do
+    context "valid attributes" do
+      it "locates the requested @game" do
+        patch :update, id: game, game: game_attributes
+        expect(assigns(:game)).to eq(game)
+      end
 
-  # describe "PATCH #update" do
-  #   context "valid attributes" do
-  #     it "locates the requested @user" do
-  #       patch :update, id: user, user: user_attributes
-  #       expect(assigns(:user)).to eq(user)
-  #     end
+      it "changes @game's attributes" do
+        patch :update, id: game, game: game_attributes
 
-  #     it "changes @user's attributes" do
-  #       patch :update, id: user, user: user_attributes
+        game.reload
+        expect(game.sport).to eq("Basketball")
+      end
 
-  #       user.reload
-  #       expect(user.full_name).to eq("Michael Bozza")
-  #     end
+      it "redirects to the updated user" do
+        patch :update, id: game, game: game_attributes
+        expect(response).to redirect_to game
+      end
+    end
+  end
 
-  #     it "redirects to the updated user" do
-  #       patch :update, id: user, user: user_attributes
-  #       expect(response).to redirect_to user
-  #     end
-  #   end
+    context "with invalid attributes" do
+      it "does not change the games's attributes" do
+        patch :update, id: game, game: game_attributes_missing_sport
 
-  #   context "with invalid attributes" do
-  #     it "does not change the user's attributes" do
-  #       patch :update, id: user, user: user_attributes_invalid_password
+        game.reload
+        expect(game.sport).to eq("Basketball")
+      end
 
-  #       user.reload
-  #       expect(user.full_name).to eq("Mike B")
-  #     end
-
-  #     it "re-renders the :edit template" do
-  #       patch :update, id: user, user: user_attributes_invalid_password
-  #       expect(response).to render_template :edit
-  #     end
-  #   end
+      # it "re-renders the :edit template" do
+      #   patch :update, id: game, game: game_attributes_missing_sport
+      #   expect(response).to render_template :edit
+      # end
+    end
 
 
   # end
 
-  # describe 'DELETE #destroy' do
-  #   before :each do
-  #     @user = User.create(user_attributes)
-  #   end
+  describe 'DELETE #destroy' do
+    before :each do
+      @game = Game.create(game_attributes)
+    end
 
-  #   it "deletes the user" do
-  #     expect{
-  #       delete :destroy, id: @user
-  #     }.to change(User,:count).by(-1)
-  #   end
+    it "deletes the user" do
+      expect{
+        delete :destroy, id: @game
+      }.to change(Game,:count).by(-1)
+    end
 
-  #   it "redirects to games#index" do
-  #     delete :destroy, id: @user
-  #     expect(response).to redirect_to root_path
-  #   end
-  # end
+    it "redirects to games#index" do
+      delete :destroy, id: @game
+      expect(response).to redirect_to root_path
+    end
+  end
 end
 
 
