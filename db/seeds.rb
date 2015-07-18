@@ -16,3 +16,6 @@ Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-
 Player.create(user_id: 1, game_id: 1, attending: false)
 Player.create(user_id: 2, game_id: 2, attending: false)
 Player.create(user_id: 3, game_id: 3, attending: false)
+Player.create(user_id: 2, game_id: 3, attending: false)
+Player.create(user_id: 2, game_id: 3, attending: true)
+Player.create(user_id: 2, game_id: 3, attending: true)
