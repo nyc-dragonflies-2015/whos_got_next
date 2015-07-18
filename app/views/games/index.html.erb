@@ -5,6 +5,8 @@
 <div><%= link_to g.location %></div>
 <%end%>
 
-<div class="login_form">
-  <%= render "/sessions/new" %>
-</div>
+<% if !is_authenticated? %>
+  <div class="login_form">
+    <%= render "/sessions/new" %>
+  </div>
+<% end %>

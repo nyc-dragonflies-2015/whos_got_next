@@ -5,20 +5,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find(params[:id])
-    if user && user.authenticate(params[:user][:password])
+    user = User.find_by(username: user_params[:username])
+    if user && user.authenticate(user_params[:password])
       session[:user_id] = user.id
       flash[:notice] = ["Logged in successfully"]
-      redirect_to user_path(user)
+      redirect_to root_path
     else
       flash[:notice] = ["Something went wrong"]
-      redirect_to login_path
+      redirect_to :back
     end
   end
 
   def destroy
-    flash[:notice] = ["You have logged out"]
     session[:user_id] = nil
+    flash[:notice] = ["You have logged out"]
     redirect_to root_path
   end
 
