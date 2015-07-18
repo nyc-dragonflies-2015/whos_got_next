@@ -2,7 +2,7 @@
 
 <% @games.each do |g| %>
 <div><%= g.sport %></div>
-<div><%= link_to g.location %></div>
+<div><%= link_to g.location, game_path(g) %></div>
 <%end%>
 
 <% if !is_authenticated? %>
