@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
+
+  def self.get_or_create_user_accounts
+
+  end
 end
