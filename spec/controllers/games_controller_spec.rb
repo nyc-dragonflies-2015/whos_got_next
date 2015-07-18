@@ -14,6 +14,10 @@ describe GamesController do
       {sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Grand Central Park", owner_id: 1}
     end
 
+    def game_attributes_change
+      {sport: "Baseball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Grand Central Park", owner_id: 1}
+    end
+
     def game_attributes_missing_sport
       {first_name: "mike", last_name: "b", password: "123456", email: "mike@example.com", phone_number: "011-345-6789"}
     end
@@ -25,12 +29,13 @@ describe GamesController do
       expect(response).to render_template :index
     end
 
-    # it "loads all games" do
-    #   game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
-    #   game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Bryant Park", owner_id: 2)
-    #   get :index
-    #   expect(assigns(:games)).to match_array([game1, game2])
-    # end
+    # test file has an issue
+    xit "loads all games" do
+      game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
+      game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Bryant Park", owner_id: 2)
+      get :index
+      expect(assigns(:games)).to match_array([game1, game2])
+    end
   end
 
   describe "GET #show" do
@@ -83,10 +88,10 @@ describe GamesController do
       end
 
       it "changes @game's attributes" do
-        patch :update, id: game, game: game_attributes
+        patch :update, id: game, game: game_attributes_change
 
         game.reload
-        expect(game.sport).to eq("Basketball")
+        expect(game.sport).to eq("Baseball")
       end
 
       it "redirects to the updated user" do
@@ -104,10 +109,11 @@ describe GamesController do
         expect(game.sport).to eq("Basketball")
       end
 
-      # it "re-renders the :edit template" do
-      #   patch :update, id: game, game: game_attributes_missing_sport
-      #   expect(response).to render_template :edit
-      # end
+      #not re-rendering template
+      xit "re-renders the :edit template" do
+        patch :update, id: game, game: game_attributes_missing_sport
+        expect(response).to render_template(:edit)
+      end
     end
 
 
