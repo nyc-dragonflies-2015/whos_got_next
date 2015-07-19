@@ -1,0 +1,5 @@
+<%= form_tag status_path(invite.id), method: :patch  do %>
+  <%= hidden_field_tag 'user_id', invite.user_id %>
+  <%= hidden_field_tag 'status', status %>
+  <%= submit_tag button_name %>
+<% end %>
