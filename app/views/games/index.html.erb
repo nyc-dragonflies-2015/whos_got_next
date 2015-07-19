@@ -6,13 +6,13 @@
     <div class ="col-md-8">
       <div class ="row">
         <div class ="col-md-4">
-          <div class ="move-col">
-            <h2>Filters</h2>
+          <h2 class = "move-col">Filters</h2>
+            <div class ="move-col display-filters">
           </div>
         </div>
         <div class ="col-md-8">
           <div class ="move-col">
-          <h2>Active Games</h2>
+          <h2>Active Sporting Events</h2>
           <div class = "display-games">
             <% @games.each do |g| %>
               <% if g.still_active? && Game.max_players_allowed(g.id) %>
