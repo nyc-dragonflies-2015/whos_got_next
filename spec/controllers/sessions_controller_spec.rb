@@ -4,7 +4,7 @@ describe SessionsController do
   let!(:user) { User.create(first_name: 'John', last_name: 'Doe', email: 'john@example.com', phone_number: '555-555-5555', password: '123456', username: 'johndoe') }
 
   describe "POST user#create" do
-    it "should log a user in with correct credentials" do
+    xit "should log a user in with correct credentials" do
       post :create, user: {username: user.username, password: user.password}
     expect(response).to redirect_to(root_path)
     expect(session[:user_id]).to eq(1)
