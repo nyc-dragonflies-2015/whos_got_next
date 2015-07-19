@@ -1,3 +1,65 @@
+body {
+  background-image: url("http://www.psdgraphics.com/file/basketball-floor.jpg");
+}
+
+#title {
+  font-weight: bold;
+  font-family: verdana;
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: darkgreen;
+}
+
+.move-col{
+  margin-top: 20%;
+}
+
+nav li {
+  color: white;
+  list-style: none;
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px;
+  padding-top: 15px;
+  font-weight: 400;
+}
+
+li a {
+  color: white;
+}
+
+li a:hover {
+  text-decoration: none;
+  background-color: darkgreen;
+  color: white;
+}
+
+.navbar-default {
+  background-color: #429542;
+  border: none;
+}
+
+.display-filters {
+  background-color: #5E9B5E;
+  font-size: 16px;
+}
+
+.display-games {
+  font-size: 18px;
+  padding: 10px;
+  background-color: #5E9B5E;
+  margin-bottom: 10%;
+}
+
+.display-games a {
+  color: white;
+  font-weight: bold;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,13 +75,3 @@
  *= require_tree .
  *= require_self
  */
-
-li {
-  color: white;
-  list-style: none;
-  display: inline-block;
-  font-size: 18px;
-  padding: 10px;
-  padding-top: 15px;
-  font-weight: 400;
-}
