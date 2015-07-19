@@ -16,28 +16,11 @@ describe PlayersController do
       expect(player.attending).to eq(true)
     end
 
-    it "updates attending value to true" do
+    it "updates attending value to false" do
       patch :status, id: player2, status: 'false', user_id: john.id
       player.reload
 
       expect(player.attending).to eq(false)
-    end    
+    end
   end
 end
-
-# it "locates the requested @user" do
-#         patch :update, id: user, user: user_attributes
-#         expect(assigns(:user)).to eq(user)
-#       end
-
-#       it "changes @user's attributes" do
-#         patch :update, id: user, user: user_attributes
-
-#         user.reload
-#         expect(user.full_name).to eq("Michael Bozza")
-#       end
-
-#       it "redirects to the updated user" do
-#         patch :update, id: user, user: user_attributes
-#         expect(response).to redirect_to user
-#       end
