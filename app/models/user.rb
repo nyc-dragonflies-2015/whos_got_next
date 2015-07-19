@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
       if indentifier.include?('@')
         result << find_or_create_email(indentifier)
       else
-        user = find_username(indentifier)
+        user = User.find_by(username: indentifier)
         result << user unless user.nil?
       end
     end
@@ -40,13 +40,15 @@ class User < ActiveRecord::Base
     if user
       return user
     else
-      username = "account#{User.last.id + 1}"
+      username = generate_temporary_username
 
       return User.create(first_name: "temporary", last_name: "account", username: username, password: "123456", email: email, phone_number: "000-000-0000")
     end
   end
 
-  def self.find_username(username)
-    User.find_by(username: username)
+  def self.generate_temporary_username
+    return "account1" if User.last.nil?
+
+    return "account#{User.last.id + 1}"
   end
 end
