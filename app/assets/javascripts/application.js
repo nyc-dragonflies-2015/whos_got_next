@@ -15,3 +15,6 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+
+// wall street lat/lng = 40.705791,-74.008499
+

@@ -7,7 +7,13 @@
   Players Invited: <% @game.players.each do |p| %>
     <div><%= p.user.full_name%> - <%= p.is_attending? %></div>
     <%end%>
+    <br>
+<button onclick="initialize()">Directions</button>
 <br>
+<br>
+<div id="googleMap" style="width:500px;height:380px;"></div>
+<br>
+
 <% if session[:user_id] == @game.owner_id%>
   <div><%= link_to "Edit Your Game", edit_game_path(@game)%></div>
   <div><%= link_to 'Delete Game', game_path(@game), method: :delete %></div>
