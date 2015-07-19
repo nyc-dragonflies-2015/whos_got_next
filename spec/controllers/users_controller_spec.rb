@@ -5,6 +5,10 @@ describe UsersController do
     User.create(first_name: "mike", last_name: "b", username: "mikeb", password: "123456", email: "mike@example.com", phone_number: "011-345-6789")
   end
 
+  let(:user2) do
+    User.create(first_name: "Mike", last_name: "Branch", username: "mikeb2", password: "123456", email: "mikebranch@example.com", phone_number: "432-544-3463")
+  end
+
   before :each do
     def user_attributes
       {first_name: "michael", last_name: "bozza", username: "mikeb", password: "123456", email: "mike@example.com", phone_number: "011-345-6789"}
@@ -139,6 +143,22 @@ describe UsersController do
       it "re-renders the :edit template" do
         patch :update, id: user, user: user_attributes_invalid_password
         expect(response).to render_template :edit
+      end
+
+      it "does not change username, when the username already exist" do
+        user
+        patch :update, id: user2, user: duplicate_username
+
+        user2.reload
+        expect(user2.username).to eq("mikeb2")
+      end
+
+      it "does not change email, when the email already exist" do
+        user
+        patch :update, id: user2, user: duplicate_email
+
+        user2.reload
+        expect(user2.email).to eq("mikebranch@example.com")
       end
     end
   end
