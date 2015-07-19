@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_user_accounts(username_or_email_list)
+    return [] if username_or_email_list.nil?
+    
     indentifiers = username_or_email_list.split(',')
     result = []
 
