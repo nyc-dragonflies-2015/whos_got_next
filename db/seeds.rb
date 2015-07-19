@@ -16,13 +16,13 @@ user3 = User.create(first_name: "sheldon", last_name: "m", username: "sheldonm",
     phone_number: Faker::PhoneNumber.phone_number
     )
 
-5.times do
-  user1.games.create(
+10.times do
+  Game.create(
     sport: "Basketball",
-    start_time: "2015-7-20 16:00",
-    end_time: "2015-7-20 17:00",
-    location: "Grand Central Park",
-    owner_id: 1
+    start_time: Faker::Time.forward(10, :morning),
+    end_time: Faker::Time.forward(10, :evening),
+    location: Faker::Address.street_name,
+    owner_id: Faker::Number.between(1,3)
     )
 end
 
@@ -30,17 +30,12 @@ game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time
 
 game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
 
-10.times do
+attending_array = ["true", "false"]
+
+20.times do
   game1.players.create(
-    user_id: Faker::Number.between(1,)
+    user_id: Faker::Number.between(1,10)
+    game_id: Faker::Number.between(1,2)
+    attending: attending_array.sample
     )
-
-
-Player.create(user_id: 1, game_id: 1, attending: false)
-Player.create(user_id: 2, game_id: 2, attending: false)
-Player.create(user_id: 3, game_id: 3, attending: false)
-Player.create(user_id: 2, game_id: 3, attending: false)
-Player.create(user_id: 2, game_id: 3, attending: true)
-Player.create(user_id: 2, game_id: 3, attending: true)
-Player.create(user_id: 2, game_id: 3, attending: true)
-Player.create(user_id: 2, game_id: 3, attending: true)
+end
