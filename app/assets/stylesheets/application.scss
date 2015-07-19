@@ -12,4 +12,10 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Graduate);
 @import "home";
+@import "profile";
+
+body {
+  font-family:'Graduate';
+}
