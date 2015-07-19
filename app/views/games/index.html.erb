@@ -1,7 +1,7 @@
 <h2>Active Games</h2>
 
 <% @games.each do |g| %>
-  <% if g.still_active? %>
+  <% if g.still_active? && Game.max_players_allowed(g.id) %>
     <div><%= g.sport %></div>
     <div><%= link_to g.location, game_path(g) %></div>
   <%end%>
