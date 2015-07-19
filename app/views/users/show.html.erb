@@ -1,15 +1,21 @@
 <div class = 'display-profile'>
-  <h1>Profile</h1>
-  <div>Name: <%= @user.full_name %></div>
-  <div>Username: <%= @user.username %></div>
-  <div>Email: <%= @user.email %></div>
-  <div>Phone Number: <%= @user.phone_number %></div>
-  <div>
-    <%= button_to 'Edit', edit_user_path(@user), method: :get %>
-    <%= button_to 'Delete', user_path(@user), method: :delete %>
+  <div class = 'container'>
+    <div class = "row">
+      <div class = "col-md-6">
+        <h1>Profile</h1>
+        <div>Name: <%= @user.full_name %></div>
+        <div>Username: <%= @user.username %></div>
+        <div>Email: <%= @user.email %></div>
+        <div>Phone Number: <%= @user.phone_number %></div>
+        <div>
+          <%= button_to 'Edit', edit_user_path(@user), method: :get, class: 'btn btn-success'  %>
+          <%= button_to 'Delete', user_path(@user), method: :delete, class: 'btn btn-success'  %>
+        </div>
+      <div>
+        <% @user.players.each do |invite| %>
+          <%= render partial: '/players/show', locals: {invite: invite} %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <% @user.players.each do |invite| %>
-      <%= render partial: '/players/show', locals: {invite: invite} %>
-    <% end %>
-  </div>
+</div>
