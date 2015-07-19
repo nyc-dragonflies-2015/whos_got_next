@@ -17,6 +17,14 @@ describe UsersController do
     def user_attributes_invalid_password
       {first_name: "michael", last_name: "bozza", username: "mikeb", password: "123", email: "mike@example.com", phone_number: "011-345-6789"}
     end
+
+    def duplicate_username
+      {first_name: "Mike", last_name: "Branch", username: "mikeb", password: "123456", email: "mikebranch@example.com", phone_number: "432-544-3463"}
+    end
+
+    def duplicate_email
+      {first_name: "Michael", last_name: "Branch", username: "mikebranch", password: "123456", email: "mike@example.com", phone_number: "653-254-7889"}
+    end
   end
 
   describe "GET #new" do
@@ -69,7 +77,7 @@ describe UsersController do
       end
     end
 
-    context "with valid attributes" do
+    context "with invalid attributes" do
       it "does not save the new user to the database" do
         expect {
           post :create, user: user_attributes_missing_username
@@ -80,6 +88,22 @@ describe UsersController do
         expect {
           post :create, user: user_attributes_invalid_password
         }.to_not change(User, :count)
+      end
+
+      it "does not save if username already exist" do
+        expect {
+          user
+
+          post :create, user: duplicate_username
+        }.to change(User, :count).by(1)
+      end
+
+      it "does not save if email already exist" do
+        expect {
+          user
+
+          post :create, user: duplicate_email
+        }.to change(User, :count).by(1)
       end
     end
   end
@@ -117,8 +141,6 @@ describe UsersController do
         expect(response).to render_template :edit
       end
     end
-
-
   end
 
   describe 'DELETE #destroy' do
