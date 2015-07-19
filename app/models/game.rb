@@ -8,4 +8,8 @@ class Game < ActiveRecord::Base
   def still_active?
     self.start_time > Time.now
   end
+
+  def self.max_players_allowed(game_id)
+    Player.attending_count(game_id) < 10
+  end
 end
