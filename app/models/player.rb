@@ -9,7 +9,7 @@ class Player < ActiveRecord::Base
   def is_attending?
     if self.attending
       return "Attending"
-      else
+    else
       return "Not Attending"
     end
   end
