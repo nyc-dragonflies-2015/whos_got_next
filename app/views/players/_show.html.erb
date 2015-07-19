@@ -1,9 +1,10 @@
 <% game = invite.game %>
-<div><%= game.sport.capitalize %> Game</div>
-<div>Location: <%= game.location.capitalize %></div>
-<div>Start Time: <%= game.start_time %></div>
-<div>End Time: <%= game.end_time %></div>
-<div>Attending: <%= invite.attending %></div>
+<div class = 'info-spacing'>
+  <div><%= game.sport.capitalize %> Game</div>
+  <div>Location: <%= game.location.capitalize %></div>
+  <div>Start Time: <%= local_time(game.start_time) %></div>
+  <div>End Time: <%= local_time(game.end_time) %></div>
+  <div>Attending: <%= invite.attending %></div>
 <div>
   <% if invite.attending %>
     <%= render partial: '/players/status_button', locals: {invite: invite, status: 'false', button_name: 'Reject'} %>
