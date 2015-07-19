@@ -32,4 +32,8 @@ describe User do
       accounts = User.find_or_create_user_accounts('mikeb, johndoe@gmail.com, johndoe@gmail.com, janed')
     }.to change(User,:count).by(1)
   end
+
+  it "#full_name should return a user's full name capitalized" do
+    expect(user.full_name).to eq('Mike B')
+  end
 end
