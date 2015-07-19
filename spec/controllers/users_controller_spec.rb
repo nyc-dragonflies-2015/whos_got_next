@@ -79,6 +79,11 @@ describe UsersController do
         post :create, user: user_attributes
         expect(response).to redirect_to root_path
       end
+
+      it "sets user_id in session" do
+        post :create, user: user_attributes
+        expect(session[:user_id]).to be_truthy
+      end
     end
 
     context "with invalid attributes" do
@@ -177,6 +182,12 @@ describe UsersController do
     it "redirects to games#index" do
       delete :destroy, id: @user
       expect(response).to redirect_to root_path
+    end
+
+    # This test is marked as pending because it always passes. Need to fix this later.
+    xit "clears user_id in session" do
+      delete :destroy, id: @user
+      expect(session[:user_id]).to be_falsey
     end
   end
 end
