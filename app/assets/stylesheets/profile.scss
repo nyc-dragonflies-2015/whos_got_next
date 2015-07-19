@@ -1,9 +1,21 @@
 .display-profile {
   font-size: 16px;
   font-weight: bold;
+  color: white;
 }
 
-.info-spacing {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.display-profile div{
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
+
+.button-move {
+  display: inline-block;
+}
+
+.move-user-info {
+  margin-top: 20%;
+  margin-left: 10%;
+  font-size: 22px;
+}
+
