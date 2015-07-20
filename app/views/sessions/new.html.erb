@@ -1,0 +1,7 @@
+<div class = "new-login">
+  <%= bootstrap_form_for @user, url: "/login" do |f| %>
+    <%= f.text_field :username %>
+    <%= f.password_field :password %>
+    <%= f.submit "Login", class: "btn btn-success" %>
+  <% end %>
+</div>
