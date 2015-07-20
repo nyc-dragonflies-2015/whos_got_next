@@ -3,13 +3,15 @@
     <div class = "row">
       <div class = "col-md-6">
         <div class ='move-user-info '>
-          <h1>Profile</h1>
-          <div>Name: <%= @user.full_name %></div>
-          <div>Username: <%= @user.username %></div>
-          <div>Email: <%= @user.email %></div>
-          <div>Phone Number: <%= @user.phone_number %></div>
-          <div class= 'button-move'>
-            <%= button_to 'Delete Account', user_path(@user), method: :delete, class: 'btn btn-default' %>
+          <div class="jumbotron">
+            <h1>Profile</h1>
+            <div>Name: <%= @user.full_name %></div>
+            <div>Username: <%= @user.username %></div>
+            <div>Email: <%= @user.email %></div>
+            <div>Phone Number: <%= @user.phone_number %></div>
+            <!-- <div class= 'button-move'>
+              <%= button_to 'Delete Account', user_path(@user), method: :delete, class: 'btn btn-default' %>
+            </div> -->
           </div>
         </div>
       </div>
