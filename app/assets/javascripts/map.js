@@ -20,7 +20,7 @@ function initialize(){
       var request = {
         origin: pos,
         destination: "55 Clark Street",
-        travelMode: google.maps.DirectionsTravelMode.DRIVING
+        travelMode: google.maps.DirectionsTravelMode.TRANSIT
       };
 
    directionsService.route(request, function (response, status) {
@@ -28,12 +28,6 @@ function initialize(){
            directionsDisplay.setDirections(response);
          }
        });
-      // var infowindow = new google.maps.InfoWindow({
-      //   map: map,
-      //   position: pos,
-      //   content: 'Location found using HTML5.' + pos
-      // });
-
       map.setCenter(pos);
     }, function() {
       handleNoGeolocation(true);
@@ -41,6 +35,17 @@ function initialize(){
   } else {
     handleNoGeolocation(false);
   }
+  var defaultBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(-33.8902, 151.1759),
+  new google.maps.LatLng(-33.8474, 151.2631));
+
+  var input = document.getElementById('searchTextField');
+  var options = {
+    bounds: defaultBounds,
+    types: ['establishment']
+};
+
+autocomplete = new google.maps.places.Autocomplete(input, options);
 }
 
 function handleNoGeolocation(errorFlag) {
