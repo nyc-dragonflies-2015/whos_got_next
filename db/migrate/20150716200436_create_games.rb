@@ -5,6 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.datetime :start_time, null: false
       t.datetime :end_time
       t.string :location, null: false
+      t.string :status, default: :public
       t.references :owner
 
       t.timestamps null: false

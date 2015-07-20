@@ -17,13 +17,14 @@ ActiveRecord::Schema.define(version: 20150716201351) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "sport",      null: false
-    t.datetime "start_time", null: false
+    t.string   "sport",                         null: false
+    t.datetime "start_time",                    null: false
     t.datetime "end_time"
-    t.string   "location",   null: false
+    t.string   "location",                      null: false
+    t.string   "status",     default: "public"
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "players", force: :cascade do |t|
