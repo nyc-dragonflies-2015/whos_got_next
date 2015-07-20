@@ -1,13 +1,10 @@
-<%= form_for @game do |f| %>
-  <%= f.label :sport %>
-  <%= f.text_field :sport %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.label :start_time %>
-  <%= f.datetime_field :start_time %>
-  <%= f.label :end_time %>
-  <%= f.datetime_field :end_time %>
-  <%= f.submit "Update Game" %>
-<% end %>
-
+<div class ='edit-account'>
+  <%= bootstrap_form_for @game do |f| %>
+    <%= f.text_field :sport %>
+    <%= f.text_field :location %>
+    <%= f.datetime_field :start_time %>
+    <%= f.datetime_field :end_time %>
+    <%= f.submit "Update Game", class: 'btn btn-default' %>
+  <% end %>
+</div>
 
