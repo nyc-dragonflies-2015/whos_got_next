@@ -1,8 +1,7 @@
 class PlayersController < ApplicationController
   def status
-    player = Player.find(params[:id])
-    player.attending = PlayersController.to_boolean(params[:status])
-    player.save
+    invite = find_or_create_invite(params[:id], params[:game_id])
+    invite.update(attending: params[:status])
 
     redirect_to user_path(params[:user_id])
   end
@@ -17,6 +16,16 @@ class PlayersController < ApplicationController
       return false
     else
       return nil
+    end
+  end
+
+  def find_or_create_invite(invite_id, game_id)
+    invite = Player.find_by(id: invite_id)
+
+    if invite
+      return invite
+    else
+      Player.create(game_id: game_id, user_id: session[:user_id])
     end
   end
 end
