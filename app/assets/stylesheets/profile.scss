@@ -4,6 +4,13 @@
   color: white;
 }
 
+.jumbotron {
+  background-image: url('http://learningvacation.net/wp-content/uploads/2012/06/chalkboard-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid white;
+}
+
 .display-profile div{
   padding-top: 5px;
   padding-bottom: 5px;
@@ -19,3 +26,20 @@
   font-size: 22px;
 }
 
+.display-invites {
+  background-image: url('http://learningvacation.net/wp-content/uploads/2012/06/chalkboard-background.jpg');
+  border: solid white 3px;
+  margin-bottom: 2%;
+  padding: 10px;
+}
+
+#profile-h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.display-games a:hover {
+  text-decoration: none;
+  background-color: #FA8320;
+  color: white;
+}
