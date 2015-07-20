@@ -6,36 +6,61 @@ user2 = User.create(first_name: "jordan", last_name: "c", username: "jordanc", p
 
 user3 = User.create(first_name: "sheldon", last_name: "m", username: "sheldonm", password: "123456", email: "sheldon@example.com", phone_number: "013-345-6789")
 
+username_array = []
+attending_array = ["true", "false"]
+
+10.times do
+  username_array << Faker::Internet.user_name
+end
+
+new_array = []
+invites_array = (new_array << username_array).flatten
+
 10.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    username: Faker::Internet.user_name,
+    username: username_array.pop,
     password: Faker::Internet.password(6),
     email: Faker::Internet.safe_email,
     phone_number: Faker::PhoneNumber.phone_number
     )
+end
 
-10.times do
+25.times do
   Game.create(
     sport: "Basketball",
-    start_time: Faker::Time.forward(10, :morning),
-    end_time: Faker::Time.forward(10, :evening),
+    start_time: Faker::Time.forward(1, :morning),
+    end_time: Faker::Time.forward(1, :evening),
     location: Faker::Address.street_name,
-    owner_id: Faker::Number.between(1,3)
+    owner_id: Faker::Number.between(1,3),
     )
 end
 
-game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Bryant Park", owner_id: 2)
-
-game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
-
-attending_array = ["true", "false"]
-
-20.times do
-  game1.players.create(
-    user_id: Faker::Number.between(1,10)
-    game_id: Faker::Number.between(1,2)
-    attending: attending_array.sample
-    )
+Game.all.each do |game|
+  rand(10).times do
+    invite = game.players.build(user_id: User.all.sample.id, attending: attending_array.sample)
+    invite.save
+  end
 end
+
+# game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Bryant Park", owner_id: 2)
+
+# game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
+
+
+# 20.times do
+#   game1.players.create(
+#     user_id: Faker::Number.between(1,10),
+#     game_id: Faker::Number.between(1,2),
+#     attending: attending_array.sample
+#     )
+# end
+
+# 20.times do
+#   game2.players.create(
+#     user_id: Faker::Number.between(1,10),
+#     game_id: Faker::Number.between(1,2),
+#     attending: attending_array.sample
+#     )
+# end
