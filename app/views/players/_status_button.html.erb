@@ -1,5 +1,6 @@
-<%= form_tag status_path(invite.id), method: :patch  do %>
-  <%= hidden_field_tag 'game_id', invite.game_id %>
+<%= form_tag status_path, method: :patch  do %>
+  <%= hidden_field_tag 'game_id', game_id %>
+  <%= hidden_field_tag 'invite_id', invite_id %>
   <%= hidden_field_tag 'status', status %>
   <%= submit_tag button_name, class: 'btn btn-default' %>
 <% end %>
