@@ -1,5 +1,6 @@
 <% @games.each do |g| %>
   <div class = "display-games">
+    <div class = "center-details">
     <% if g.still_active? && Game.max_players_allowed(g.id) %>
       <div><%= g.sport %></div>
       <div>Players Currently Attending: <%=Player.attending_count(g.id)%> </div>
@@ -7,6 +8,7 @@
       <div>Starts: <%= local_time(g.start_time) %></div>
       <div>Ends: <%= local_time(g.end_time) %></div>
       <br>
+    </div>
   </div>
   <%end%>
 <%end%>
