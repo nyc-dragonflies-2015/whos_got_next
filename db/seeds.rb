@@ -27,12 +27,24 @@ invites_array = (new_array << username_array).flatten
     )
 end
 
-25.times do
+20.times do
   Game.create(
     sport: "Basketball",
     start_time: Faker::Time.forward(1, :morning),
     end_time: Faker::Time.forward(1, :evening),
     location: Faker::Address.street_name,
+    status: "Public",
+    owner_id: Faker::Number.between(1,3),
+    )
+end
+
+5.times do
+  Game.create(
+    sport: "Basketball",
+    start_time: Faker::Time.forward(1, :morning),
+    end_time: Faker::Time.forward(1, :evening),
+    location: Faker::Address.street_name,
+    status: "Private",
     owner_id: Faker::Number.between(1,3),
     )
 end
