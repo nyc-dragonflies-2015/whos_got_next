@@ -6,17 +6,23 @@ body {
   font-weight: bold;
   font-size: 60px;
   padding-bottom: 20px;
-  color: darkgreen;
+  color: white;
+}
+
+#home-h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 5%;
 }
 
 a:hover {
   text-decoration: none;
-  background-color: darkgreen;
+  background-color: black;
 }
 
-.move-col{
+/*.move-col{
   margin-top: 20%;
-}
+}*/
 
 nav li {
   color: white;
@@ -38,25 +44,40 @@ li a {
 
 li a:hover {
   text-decoration: none;
-  background-color: darkgreen;
+  background-color: black;
   color: white;
 }
 
 .navbar-default {
-  background-color: #429542;
-  border: none;
+  background-image: url('http://learningvacation.net/wp-content/uploads/2012/06/chalkboard-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: solid white 2px;
+  border-radius: 2px;
 }
 
-.display-filters {
+/*.display-filters {
   background-color: #5E9B5E;
   font-size: 16px;
+}*/
+
+.center-details {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .display-games {
+  font-family: 'Chalkboard';
   font-size: 18px;
-  padding: 10px;
-  background-color: #5E9B5E;
-  margin-bottom: 10%;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin: 0 auto;
+  width: 40%;
+  margin-bottom: 3%;
+  color: white;
+  background-image: url('http://learningvacation.net/wp-content/uploads/2012/06/chalkboard-background.jpg');
+  border: solid white 3px;
 }
 
 .display-games a {

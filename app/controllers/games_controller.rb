@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games = Game.all.order('start_time ASC')
     @user = User.new
   end
 
