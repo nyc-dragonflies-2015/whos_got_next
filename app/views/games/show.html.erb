@@ -2,7 +2,7 @@
 
   <div>Starts: <%= local_time(@game.start_time) %></div>
   <div>Ends: <%= local_time(@game.end_time) %></div>
-  <div><%= link_to @game.location %></div>
+  <div><%= @game.location %></div>
   <div>Players Attending: <%= Player.attending_count(@game.id)%></div>
   Players Invited: <% @game.players.each do |p| %>
     <div><%= p.user.full_name%> - <%= p.is_attending? %></div>
@@ -11,19 +11,19 @@
 <br>
 <br>
 
-<div id="googleMap" style="width:500px;height:380px;"></div>
-<form id="geolocator" onSubmit="geolocate()" data-remote="true">
-<input id="autocomplete" placeholder="Enter the address"></input>
-<input type="submit" onclick="geolocate()" value="Directions"></button>
-</form>
-<div id="map-canvas"></div>
-<br>
-
-
 <% if session[:user_id] == @game.owner_id%>
   <div><%= link_to "Edit Your Game", edit_game_path(@game), class: 'btn btn-default'%></div>
   <div><%= link_to 'Delete Game', game_path(@game), method: :delete , class: 'btn btn-default'%></div>
 <% end %>
+
+<input id="autocomplete" class = 'auto-finish' placeholder="Enter the address"></input>
+<input class = 'auto-finish btn-default' type="submit" onclick="geolocate()" value="Directions"></button>
+<div id="googleMap" style="width:500px;height:380px;"></div>
+<form id="geolocator" onSubmit="geolocate()" data-remote="true">
+</form>
+<div id="map-canvas"></div>
+<br>
+
 
 <script type="text/javascript">
   $(function() {
