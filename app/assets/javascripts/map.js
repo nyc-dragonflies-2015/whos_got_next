@@ -1,46 +1,42 @@
 function initialize(){
-  // var myCenter=new google.maps.LatLng(40.705791,-74.008499);
-
-
-  // var mapProp = {
-  //   center:myCenter,
-  //   zoom:13,
-  //   mapTypeId:google.maps.MapTypeId.ROADMAP
-  //   };
-
-  // var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-  // var marker=new google.maps.Marker({
-  //   position:myCenter,
-  //   });
-
-  // marker.setMap(map);
-
   var map;
+  var pos;
 
   var mapOptions = {
-    zoom: 13
+    zoom: 13,
+    center: pos
   };
+
   map = new google.maps.Map(document.getElementById('googleMap'),
       mapOptions);
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById('map-canvas'));
+      var request = {
+        origin: pos,
+        destination: "55 Clark Street",
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+      };
 
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'Location found using HTML5.'
-      });
+   directionsService.route(request, function (response, status) {
+         if (status == google.maps.DirectionsStatus.OK) {
+           directionsDisplay.setDirections(response);
+         }
+       });
+      // var infowindow = new google.maps.InfoWindow({
+      //   map: map,
+      //   position: pos,
+      //   content: 'Location found using HTML5.' + pos
+      // });
 
       map.setCenter(pos);
     }, function() {
-
-    var marker=new google.maps.Marker({
-    position:myCenter,
-    });
-    marker.setMap(map);
+      handleNoGeolocation(true);
     });
   } else {
     handleNoGeolocation(false);
