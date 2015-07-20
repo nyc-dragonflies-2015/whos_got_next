@@ -1,4 +1,5 @@
 <h2><%= @game.sport %></h2>
+
   <div>Starts: <%= local_time(@game.start_time) %></div>
   <div>Ends: <%= local_time(@game.end_time) %></div>
   <div><%= link_to @game.location %></div>
@@ -6,8 +7,30 @@
   Players Invited: <% @game.players.each do |p| %>
     <div><%= p.user.full_name%> - <%= p.is_attending? %></div>
     <%end%>
+    <br>
 <br>
+<br>
+
+<div id="googleMap" style="width:500px;height:380px;"></div>
+<form id="geolocator" onSubmit="geolocate()" data-remote="true">
+<input id="autocomplete" placeholder="Enter the address"></input>
+<input type="submit" onclick="geolocate()" value="directions"></button>
+</form>
+<div id="map-canvas"></div>
+<br>
+
 <% if session[:user_id] == @game.owner_id%>
   <div><%= link_to "Edit Your Game", edit_game_path(@game)%></div>
   <div><%= link_to 'Delete Game', game_path(@game), method: :delete %></div>
 <%end%>
+
+<script type="text/javascript">
+  $(function() {
+    initialize();
+    $('#autocomplete').on('keydown', function(e) {
+      if (e.keyCode == 31) {
+        $('#geolocator').submit();
+      }
+    })
+  });
+</script>
