@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :created_games, foreign_key: :owner_id, class_name: 'Game'
   has_many :players
+  has_many :invites, foreign_key: :user_id, class_name: 'Player'
   has_many :games, through: :players
 
   validates_presence_of :email, :username, :password, :first_name, :last_name
