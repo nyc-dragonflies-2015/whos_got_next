@@ -8,12 +8,14 @@
     <div><%= p.user.full_name%> - <%= p.is_attending? %></div>
     <%end%>
     <br>
-<button onclick="initialize()">Directions</button>
 <br>
 <br>
+
 <div id="googleMap" style="width:500px;height:380px;"></div>
-<input id="autocomplete" placeholder="Enter your address"></input>
-<!-- </div> -->
+<form id="geolocator" onSubmit="geolocate()" data-remote="true">
+<input id="autocomplete" placeholder="Enter the address"></input>
+<input type="submit" onclick="geolocate()" value="directions"></button>
+</form>
 <div id="map-canvas"></div>
 <br>
 
@@ -22,3 +24,13 @@
   <div><%= link_to 'Delete Game', game_path(@game), method: :delete %></div>
 <%end%>
 
+<script type="text/javascript">
+  $(function() {
+    initialize();
+    $('#autocomplete').on('keydown', function(e) {
+      if (e.keyCode == 31) {
+        $('#geolocator').submit();
+      }
+    })
+  });
+</script>
