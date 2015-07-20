@@ -1,30 +1,21 @@
 <div class="container">
   <div class="row">
-      <div class = "container text-center">
-        <h1 id ="title">Who's Got Next</h1>
+    <div class = "container text-center">
+      <h1 id ="title">Who's Got Next</h1>
     </div>
-    <div class ="col-md-8">
-      <div class ="row">
-        <div class ="col-md-4">
+    <div class ="col-md-12 col-xs-12">
+      <!-- <div class ="row">
+        <div class ="col-md-4"> -->
           <!-- <h2 class = "move-col">Filters</h2> -->
-            <div class ="move-col display-filters">
-          </div>
-        </div>
-        <div class ="col-md-8">
+            <!-- <div class ="move-col display-filters"> -->
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class ="col-md-8"> -->
           <div class ="move-col">
-          <h2>Active Sporting Events</h2>
-          <div class = "display-games">
-            <% @games.each do |g| %>
-              <% if g.still_active? && Game.max_players_allowed(g.id) %>
-                <div><%= g.sport %></div>
-                <div>Players Currently Attending: <%=Player.attending_count(g.id)%> </div>
-                <div>Location: <%= link_to g.location, game_path(g), class: 'change-color' %></div>
-                <br>
-              <%end%>
-            <%end%>
+            <h2 id = 'home-h2'>Active Sporting Events</h2>
+            <%= render partial: 'show' %>
           </div>
-        </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
 </div>
