@@ -1,4 +1,11 @@
 class User < ActiveRecord::Base
+  # Or, another idea: create a TemporaryUser class that uses the table of
+  # 'User' so that you could say
+  #
+  #
+  # TemporaryUser.create(username: username, email: email)
+  TEMPORARY_USER_CONFIGURATION = { first_name: "temporary", last_name: "account", password: "123456", phone_number: "000-000-0000" }
+
   has_secure_password
   has_many :created_games, foreign_key: :owner_id, class_name: 'Game'
   has_many :players
@@ -13,23 +20,15 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_user_accounts(username_or_email_list)
-    return [] if username_or_email_list.nil?
-
-    indentifiers = username_or_email_list.split(',')
-    result = []
-
-    indentifiers.each do |indentifier|
-      indentifier.strip!
-
-      if indentifier.include?('@')
-        result << find_or_create_email(indentifier)
+    username_or_email_list.split(',').each_with_object([]) do |identifier, result|
+      identifier.strip!
+      if identifier.include?('@')
+        result << find_or_create_email(identifier)
       else
-        user = User.find_by(username: indentifier)
+        user = User.find_by(username: identifier)
         result << user unless user.nil?
       end
     end
-
-    return result
   end
 
   private
@@ -41,8 +40,7 @@ class User < ActiveRecord::Base
       return user
     else
       username = generate_temporary_username
-
-      return User.create(first_name: "temporary", last_name: "account", username: username, password: "123456", email: email, phone_number: "000-000-0000")
+      return User.create(TEMPORARY_USER_CONFIGURATION.merge({username: username, email:email}))
     end
   end
 

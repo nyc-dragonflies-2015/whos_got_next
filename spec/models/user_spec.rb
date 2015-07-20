@@ -27,6 +27,10 @@ describe User do
     expect(accounts.count).to eq(2)
   end
 
+  it "does not blow up if the string is empty" do
+    accounts = User.find_or_create_user_accounts('')
+  end
+
   it "#find_or_create_user_accounts create user accounts for emails" do
     expect{
       accounts = User.find_or_create_user_accounts('mikeb, johndoe@gmail.com, johndoe@gmail.com, janed')

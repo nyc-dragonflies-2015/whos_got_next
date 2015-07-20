@@ -1,23 +1,28 @@
 require 'rails_helper'
 
 describe GamesController do
+  # Use FG.
   let(:user) { User.create(first_name: "mike", last_name: "b", username: "mikeb", password: "123456", email: "mike@example.com", phone_number: "011-345-6789") }
-
+  # Use FG.
   let(:game) { Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Grand Central Park", owner_id: 1) }
 
   before :each do
+    # If you use FG, you get this for free e.g. attributes_for(:user)
     def user_attributes
       {first_name: "michael", last_name: "bozza", username: "mikeb", password: "123456", email: "mike@example.com", phone_number: "011-345-6789"}
     end
 
+    # If you use FG, you get this for free e.g. attributes_for(:user)
     def game_attributes
       {sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Grand Central Park", owner_id: 1}
     end
 
+    # If you use FG, you get this for free e.g. attributes_for(:user)
     def game_attributes_change
       {sport: "Baseball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Grand Central Park", owner_id: 1}
     end
 
+    # If you use FG, you get this for free e.g. attributes_for(:user)
     def game_attributes_missing_sport
       {first_name: "mike", last_name: "b", password: "123456", email: "mike@example.com", phone_number: "011-345-6789"}
     end
@@ -30,6 +35,16 @@ describe GamesController do
     end
 
     # test file has an issue
+    # FG has the ability to create sequences
+    #
+    # But I think better yet is use Factory Girl to create something with an
+    # association.  For example:
+    #
+    # factory :game do
+    #   # ...
+    #     owner # Provided you have an Owner factory...
+    #     end
+    #
     xit "loads all games" do
       game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
       game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Bryant Park", owner_id: 2)
@@ -67,7 +82,7 @@ describe GamesController do
       it "saves the new game in the database" do
         expect {
           post :create, game: game_attributes
-          }.to change(Game, :count).by(1)
+        }.to change(Game, :count).by(1)
       end
     end
   end
@@ -136,25 +151,3 @@ describe GamesController do
     end
   end
 end
-
-
-
-  # before(:each) do
-  #   visit("/")
-  #   fill_in 'user_username', with: "johndoe"
-  #   fill_in 'user_password', with: "123456"
-  #   click_button 'Login'
-  # end
-
-  # describe 'POST #create' do
-  #   it 'should create a game' do
-  #     click_link('Create A Game')
-  #     fill_in 'sport', :with => "Basketball"
-  #     fill_in 'start_time', :with => Time.now
-  #     fill_in 'end_time', :with => Time.now
-  #     fill_in 'location', :with => "GC Park"
-  #     click_button "Create Game"
-  #     expect(page).to have_content("GC Park")
-  #   end
-  # end
-# end
