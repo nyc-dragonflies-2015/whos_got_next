@@ -52,3 +52,4 @@ private
     params.require(:game).permit(:sport, :start_time, :end_time, :location, :owner_id)
   end
 end
+

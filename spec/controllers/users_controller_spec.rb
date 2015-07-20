@@ -184,8 +184,8 @@ describe UsersController do
       expect(response).to redirect_to root_path
     end
 
-    # This test is marked as pending because it always passes. Need to fix this later.
-    xit "clears user_id in session" do
+    it "clears user_id in session" do
+      session[:user_id] = @user.id
       delete :destroy, id: @user
       expect(session[:user_id]).to be_falsey
     end
