@@ -12,13 +12,13 @@
   <nav class="navbar navbar-default">
     <ul>
       <li><%= link_to 'Home', games_path%></li>
-      <li><%= link_to 'Login', login_path%></li>
     <% if is_authenticated? %>
       <li><%= link_to 'Your Profile', user_path(current_user.id)%></li>
       <li><%= link_to 'Create Game', new_game_path%></li>
       <li><%= link_to 'Edit Account', edit_user_path(current_user.id)%></li>
       <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
     <%else%>
+      <li><%= link_to 'Login', login_path%></li>
       <li><%= link_to 'Sign-Up', new_user_path %></li>
     <%end%>
   </ul>
