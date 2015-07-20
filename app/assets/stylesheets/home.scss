@@ -6,7 +6,12 @@ body {
   font-weight: bold;
   font-size: 60px;
   padding-bottom: 20px;
-  color: darkgreen;
+  color: white;
+}
+
+#home-h2 {
+  color: white;
+  text-align: center;
 }
 
 a:hover {
@@ -14,9 +19,9 @@ a:hover {
   background-color: darkgreen;
 }
 
-.move-col{
+/*.move-col{
   margin-top: 20%;
-}
+}*/
 
 nav li {
   color: white;
@@ -56,6 +61,9 @@ li a:hover {
   font-size: 18px;
   padding: 10px;
   background-color: #5E9B5E;
+  margin-bottom: 10%;
+  margin: 0 auto;
+  width: 50%;
   margin-bottom: 10%;
 }
 
