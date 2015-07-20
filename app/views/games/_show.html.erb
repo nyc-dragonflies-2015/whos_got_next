@@ -1,9 +1,9 @@
 <% @games.each do |g| %>
   <div class = "display-games">
-    <% if g.still_active? && Game.max_players_allowed(g.id) %>
+    <% if has_satisfactory_conditions?(g) %>
       <div><%= g.sport %></div>
       <div>Players Currently Attending: <%=Player.attending_count(g.id)%> </div>
-      <div>Location: <%= link_to g.location, game_path(g), class: 'change-color' %></div>
+      <div>Location: <%= link_to g.location, game_path(g)%></div>
       <div>Starts: <%= local_time(g.start_time) %></div>
       <div>Ends: <%= local_time(g.end_time) %></div>
       <div>Status: <%= g.status %></div>
