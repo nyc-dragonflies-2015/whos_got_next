@@ -30,7 +30,7 @@ describe GamesController do
     end
 
     # test file has an issue
-    xit "loads all games" do
+    it "loads all games" do
       game1 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Battery Park", owner_id: 3)
       game2 = Game.create(sport: "Basketball", start_time: "2015-7-20 16:00", end_time: "2015-7-20 17:00", location: "Bryant Park", owner_id: 2)
       get :index
@@ -108,16 +108,7 @@ describe GamesController do
         game.reload
         expect(game.sport).to eq("Basketball")
       end
-
-      #not re-rendering template
-      xit "re-renders the :edit template" do
-        patch :update, id: game, game: game_attributes_missing_sport
-        expect(response).to render_template(:edit)
-      end
     end
-
-
-  # end
 
   describe 'DELETE #destroy' do
     before :each do
