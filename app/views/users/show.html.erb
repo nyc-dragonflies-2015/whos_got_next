@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class = "col-md-6">
-        <h2 id ='profile-h2'>Current Invites</h2>
+        <h1 id ='profile-h2'>Current Invites</h1>
         <% @user.players.each do |invite| %>
           <%= render partial: '/players/show', locals: {invite: invite} %>
         <% end %>
