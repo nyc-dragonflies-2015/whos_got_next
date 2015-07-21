@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
 
-  patch "/players/:id/status" => "players#status", as: "status"
+  patch "/players/status" => "players#status", as: "status"
 end
