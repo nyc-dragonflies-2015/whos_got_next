@@ -2,7 +2,7 @@
   <div class = 'container'>
     <div class = "row">
       <div class = "col-md-6">
-        <div class ='move-user-info '>
+        <div class ='move-user-info'>
           <div class="jumbotron">
             <h1>Profile</h1>
             <div>Name: <%= @user.full_name %></div>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class = "col-md-6">
-        <h1 id ='profile-h2'>Current Events and Invites</h1>
+        <h1 id ='profile-h2'>Current Events</h1>
         <% @user.games.each do |game| %>
           <% if has_satisfactory_conditions?(game) %>
             <%= render partial: 'games/show', locals: {game: game} %>
