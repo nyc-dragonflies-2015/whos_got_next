@@ -7,12 +7,6 @@
   <div>Status: <%= game.status %></div>
   <% if session[:user_id] %>
     <% invite = game.invites.find_by(user_id: session[:user_id]) %>
-    <% if invite.nil? %>
-      <%= render partial: '/players/button', locals: {invite_id: nil, game_id: game.id, status: 'true', button_name: 'Join'} %>
-    <% elsif invite.attending %>
-      <%= render partial: '/players/button', locals: {invite_id: invite.id, game_id: game.id, status: 'false', button_name: 'Leave'} %>
-    <% else %>
-      <%= render partial: '/players/button', locals: {invite_id: invite.id, game_id: game.id, status: 'true', button_name: 'Join'} %>
-    <% end %>
+    <%= render partial: 'players/join_leave_button', locals: {invite: invite, game_id: game.id} %>
   <% end %>
 </div>

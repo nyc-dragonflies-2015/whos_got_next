@@ -1,0 +1,7 @@
+<% if invite.nil? %>
+  <%= render partial: '/players/button', locals: {invite_id: nil, game_id: game_id, status: 'true', button_name: 'Join'} %>
+<% elsif invite.attending %>
+  <%= render partial: '/players/button', locals: {invite_id: invite.id, game_id: game_id, status: 'false', button_name: 'Leave'} %>
+<% else %>
+  <%= render partial: '/players/button', locals: {invite_id: invite.id, game_id: game_id, status: 'true', button_name: 'Join'} %>
+<% end %>
