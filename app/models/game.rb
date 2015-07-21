@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :players
+  has_many :invites, foreign_key: :game_id, class_name: 'Player'
   has_many :users, through: :players
 
   validates_presence_of :sport, :start_time, :location

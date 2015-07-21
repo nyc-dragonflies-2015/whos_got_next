@@ -1,13 +1,12 @@
-<% @games.each do |g| %>
-  <% if has_satisfactory_conditions?(g) %>
-    <div class = "display-games">
-      <div><%= g.sport %></div>
-      <div>Players Currently Attending: <%=Player.attending_count(g.id)%> </div>
-      <div>Location: <%= link_to g.location, game_path(g)%></div>
-      <div>Starts: <%= local_time(g.start_time) %></div>
-      <div>Ends: <%= local_time(g.end_time) %></div>
-      <div>Status: <%= g.status %></div>
-      <br>
-    </div>
-  <%end%>
-<%end%>
+<div class = "display-games">
+  <div><%= game.sport %></div>
+  <div>Players Currently Attending: <%=Player.attending_count(game.id)%> </div>
+  <div>Location: <%= link_to game.location, game_path(game)%></div>
+  <div>Starts: <%= local_time(game.start_time) %></div>
+  <div>Ends: <%= local_time(game.end_time) %></div>
+  <div>Status: <%= game.status %></div>
+  <% if session[:user_id] %>
+    <% invite = game.invites.find_by(user_id: session[:user_id]) %>
+    <%= render partial: 'players/join_leave_button', locals: {invite: invite, game_id: game.id} %>
+  <% end %>
+</div>

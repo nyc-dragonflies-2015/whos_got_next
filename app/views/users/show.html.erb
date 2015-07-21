@@ -17,9 +17,12 @@
       </div>
       <div class = "col-md-6">
         <h1 id ='profile-h2'>Current Invites</h1>
-        <% @user.players.each do |invite| %>
-          <%= render partial: '/players/show', locals: {invite: invite} %>
-        <% end %>
+        <% @user.games.each do |game| %>
+          <% if has_satisfactory_conditions?(game) %>
+            <%= render partial: 'games/show', locals: {game: game} %>
+            <br>
+          <%end%>
+        <%end%>
       </div>
     </div>
   </div>

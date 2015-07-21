@@ -3,5 +3,10 @@
     <h1 id ="title">Who's Got Next</h1>
   </div>
     <h2 id = 'home-h2'>Active Sporting Events</h2>
-      <%= render partial: 'show' %>
+    <% @games.each do |game| %>
+      <% if has_satisfactory_conditions?(game) %>
+        <%= render partial: 'show', locals: {game: game} %>
+        <br>
+      <%end%>
+    <%end%>
 </div>
