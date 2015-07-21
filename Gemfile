@@ -19,6 +19,8 @@ gem 'jquery-rails'
 # Use bootstrap libraries
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
+# make app deploy to heroku cleanly
+gem 'rails_12factor', group: :production
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
