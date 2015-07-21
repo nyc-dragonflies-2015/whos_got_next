@@ -16,7 +16,7 @@
           </div>
       </div>
       <div class = 'player-invites'>
-        <div class ='span-1'>Players Invited:</div> <% @game.players.each do |p| %>
+        <span class ='span-1'>Players Invited:</span> <% @game.players.each do |p| %>
           <div><%= p.user.full_name%> - <%= p.is_attending? %></div>
           <%end%>
           <br>
