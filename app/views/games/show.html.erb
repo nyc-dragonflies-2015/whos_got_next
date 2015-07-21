@@ -1,20 +1,26 @@
 <div class ='container'>
   <div class ='row'>
     <div class='col-md-6'>
-      <h2><%= @game.sport %></h2>
-        <div>Starts: <%= local_time(@game.start_time) %></div>
-        <div>Ends: <%= local_time(@game.end_time) %></div>
-        <div><%= @game.location %></div>
-        <div>Players Attending: <%= Player.attending_count(@game.id)%></div>
-        Players Invited: <% @game.players.each do |p| %>
+      <div class ='display-game-info'>
+        <h2 id ='game-show-h2'><%= @game.sport %></h2>
+          <div>Starts: <%= local_time(@game.start_time) %></div>
+          <div>Ends: <%= local_time(@game.end_time) %></div>
+          <div><%= @game.location %></div>
+          <div>Players Attending: <%= Player.attending_count(@game.id)%>
+            <br>
+            <br>
+            <ul class = 'button-fix'>
+              <li><div><%= button_to "Edit Your Game", edit_game_path(@game), method: :get, class: 'btn btn-default'%></div></li>
+              <li><div><%= button_to 'Delete Game', game_path(@game), method: :delete , class: 'btn btn-default'%></div></li>
+            </ul>
+          </div>
+      </div>
+      <div class = 'player-invites'>
+        <div class ='span-1'>Players Invited:</div> <% @game.players.each do |p| %>
           <div><%= p.user.full_name%> - <%= p.is_attending? %></div>
           <%end%>
           <br>
-
-      <% if session[:user_id] == @game.owner_id%>
-        <div><%= link_to "Edit Your Game", edit_game_path(@game), class: 'btn btn-default'%></div>
-        <div><%= link_to 'Delete Game', game_path(@game), method: :delete , class: 'btn btn-default'%></div>
-      <% end %>
+      </div>
     </div>
 
     <div class='col-md-6'>
