@@ -28,11 +28,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.send_invites
+  def send_invites(params)
+    byebug
+    @user = Game.find_by(owner_id: params[:game][:owner_id])
     account = ENV["TWILIO_ACCOUNT_SID"]
     auth = ENV["TWILIO_AUTH_TOKEN"]
     @client = Twilio::REST::Client.new(account, auth)
-    @message = @client.messages.create(from: '+16312237553', to: '+16314952889', body: 'Learning to send SMS you are.')
+    @message = @client.messages.create(from: '+16312237553', to: "+1" + @user.invites, body: 'You are invited to play a pick up game! Check the website for details')
   end
 
   private
