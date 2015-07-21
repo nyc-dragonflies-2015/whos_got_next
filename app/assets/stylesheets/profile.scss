@@ -5,7 +5,7 @@
 }
 
 .jumbotron {
-  background-image: url('../images/chalkboard-background.jpg');
+  background: image-url('chalkboard-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid white;
@@ -27,7 +27,7 @@
 }
 
 .display-invites {
-  background-image: url('../images/chalkboard-background.jpg');
+  background: image-url('chalkboard-background.jpg');
   border: solid white 3px;
   margin-bottom: 2%;
   padding: 10px;
@@ -43,7 +43,7 @@
   width: 40%;
   margin-bottom: 3%;
   color: white;
-  background-image: url('../images/chalkboard-background.jpg');
+  background: image-url('chalkboard-background.jpg');
   border: solid white 3px;
 }
 
