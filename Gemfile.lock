@@ -82,6 +82,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    jwt (1.5.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     local_time (1.0.2)
@@ -171,6 +172,10 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    twilio-ruby (3.16.1)
+      builder (>= 2.1.2)
+      jwt (~> 1.0)
+      multi_json (>= 1.3.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -208,6 +213,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda-matchers
   spring
+  twilio-ruby (~> 3.12)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 
