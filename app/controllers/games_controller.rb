@@ -19,7 +19,7 @@ class GamesController < ApplicationController
       invites = User.find_or_create_user_accounts(String(params[:invites]))
 
       invites.each { |player| Player.create(user_id: player.id, game_id:  @game.id) }
-
+      User.send_invites
       redirect_to game_path(@game)
     else
       render :new
