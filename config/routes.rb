@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
 
   patch "/players/status" => "players#status", as: "status"
+
+  post 'twilio/voice' => 'twilio#voice'
+  get 'notifications/notify' => 'notifications#notify'
 end
