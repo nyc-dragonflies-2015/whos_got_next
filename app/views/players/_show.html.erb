@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class = 'display-invites'>
   <% game = invite.game %>
 
@@ -8,8 +9,8 @@
     <div>Attending: <%= invite.attending %></div>
 
     <% if invite.attending %>
-      <%= render partial: '/players/status_button', locals: {invite_id: invite.id, game_id: invite.game_id, status: 'false', button_name: 'Reject'} %>
+      <%= render partial: '/players/status_button', locals: {invite_id: invite.id, game_id: invite.game_id, status: 'false', button_name: 'Leave'} %>
     <% else %>
-      <%= render partial: '/players/status_button', locals: {invite_id: invite.id, game_id: invite.game_id, status: 'true', button_name: 'Accept'} %>
+      <%= render partial: '/players/status_button', locals: {invite_id: invite.id, game_id: invite.game_id, status: 'true', button_name: 'Join'} %>
     <% end %>
 </div>
