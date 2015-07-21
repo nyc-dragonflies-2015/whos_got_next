@@ -1,5 +1,5 @@
 body {
-  background-image: url("basketball-floor-texture.jpg");
+  background-image: url("../images/basketball-floor-texture.jpg");
 }
 
 #title {
@@ -41,7 +41,7 @@ li a:hover {
 }
 
 .navbar-default {
-  background-image: url('chalkboard-background.jpg');
+  background-image: url('../images/chalkboard-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   border: solid white 2px;
@@ -58,7 +58,7 @@ li a:hover {
   width: 40%;
   margin-bottom: 3%;
   color: white;
-  background-image: url('chalkboard-background.jpg');
+  background-image: url('../images/chalkboard-background.jpg');
   border: solid white 3px;
 }
 
