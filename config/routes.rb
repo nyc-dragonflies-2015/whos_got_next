@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   patch "/players/status" => "players#status", as: "status"
 
-  get 'games/:id/invites' => 'users#send_text'
+  get '/invites' => 'users#send_text'
 end
