@@ -28,6 +28,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.send_invites
+    account = ENV["TWILIO_ACCOUNT_SID"]
+    auth = ENV["TWILIO_AUTH_TOKEN"]
+    @client = Twilio::REST::Client.new(account, auth)
+    @message = @client.messages.create(from: '+16312237553', to: '+16314952889', body: 'Learning to send SMS you are.')
+  end
+
   private
 
   def self.find_or_create_email(email)
