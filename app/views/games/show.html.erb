@@ -10,8 +10,10 @@
             <br>
             <br>
             <ul class = 'button-fix'>
-              <li><div><%= button_to "Edit Your Game", edit_game_path(@game), method: :get, class: 'btn btn-default'%></div></li>
-              <li><div><%= button_to 'Delete Game', game_path(@game), method: :delete , class: 'btn btn-default'%></div></li>
+              <% if session[:user_id] == @game.owner_id %>
+                <li><div><%= button_to "Edit Your Game", edit_game_path(@game), method: :get, class: 'btn btn-default'%></div></li>
+                <li><div><%= button_to 'Delete Game', game_path(@game), method: :delete , class: 'btn btn-default'%></div></li>
+              <% end %>
             </ul>
           </div>
       </div>

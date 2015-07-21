@@ -9,14 +9,11 @@
             <div>Username: <%= @user.username %></div>
             <div>Email: <%= @user.email %></div>
             <div>Phone Number: <%= @user.phone_number %></div>
-            <!-- <div class= 'button-move'>
-              <%= button_to 'Delete Account', user_path(@user), method: :delete, class: 'btn btn-default' %>
-            </div> -->
           </div>
         </div>
       </div>
       <div class = "col-md-6">
-        <h1 id ='profile-h2'>Current Invites</h1>
+        <h1 id ='profile-h2'>Current Events and Invites</h1>
         <% @user.games.each do |game| %>
           <% if has_satisfactory_conditions?(game) %>
             <%= render partial: 'games/show', locals: {game: game} %>
