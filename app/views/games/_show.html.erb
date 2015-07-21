@@ -4,4 +4,14 @@
   <div>Location: <%= link_to game.location, game_path(game)%></div>
   <div>Starts: <%= local_time(game.start_time) %></div>
   <div>Ends: <%= local_time(game.end_time) %></div>
+  <% if session[:user_id] %>
+    <% invite = game.invites.find_by(user_id: session[:user_id]) %>
+    <% if invite.nil? %>
+      <%= render partial: '/players/status_button', locals: {invite_id: nil, game_id: game.id, status: 'true', button_name: 'Join'} %>
+    <% elsif invite.attending %>
+      <%= render partial: '/players/status_button', locals: {invite_id: invite.id, game_id: game.id, status: 'false', button_name: 'Leave'} %>
+    <% else %>
+      <%= render partial: '/players/status_button', locals: {invite_id: invite.id, game_id: game.id, status: 'true', button_name: 'Join'} %>
+    <% end %>
+  <% end %>
 </div>
