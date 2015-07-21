@@ -3,7 +3,11 @@ class PlayersController < ApplicationController
     invite = PlayersController.find_or_create_invite(invite_id: params[:invite_id], game_id: params[:game_id], user_id: session[:user_id])
     invite.update(attending: PlayersController.to_boolean(params[:status]))
 
-    redirect_to user_path(session[:user_id])
+    if request.xhr?
+      render partial: 'games/show', locals: {game: invite.game}
+    else
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   private
