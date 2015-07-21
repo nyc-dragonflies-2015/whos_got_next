@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def send_text
+  def send_text #=> route
     @user = User.find_by(phone_number: params[:phone_number])
     @user.send_invites
     redirect_to root_path
