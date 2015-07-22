@@ -20,8 +20,7 @@ class GamesController < ApplicationController
 
       users.each do |user|
         Player.create(user_id: user.id, game_id:  @game.id)
-        User.text(user)
-    end
+      end
       redirect_to game_path(@game)
     else
       render :new
