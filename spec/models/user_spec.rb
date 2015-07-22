@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe User do
-  # let!(:user) { User.create(first_name: "mike", last_name: "b", username: "mikeb", password: "123456", email: "mike@example.com", phone_number: "011-345-6789") }
+  let!(:user) { User.create(first_name: "mike", last_name: "b", username: "mikeb", password: "123456", email: "mike@example.com", phone_number: "011-345-6789") }
 
-  # subject { User.new(first_name: 'John', last_name: 'Doe', email: 'john@example.com', phone_number: '555-555-5555', username: 'johndoe') }
+  subject { User.new(first_name: 'John', last_name: 'Doe', email: 'john@example.com', phone_number: '555-555-5555', username: 'johndoe') }
 
   it { should have_many(:players) }
   it { should have_many(:games) }
