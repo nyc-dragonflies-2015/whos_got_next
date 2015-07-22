@@ -1,5 +1,5 @@
 class ChangeStatusToBooleanAndNameToPrivate < ActiveRecord::Migration
   def change
-    change_column :games, :status, :private, default: false
+    add_column :games, :private, :boolean, default: false
   end
 end
