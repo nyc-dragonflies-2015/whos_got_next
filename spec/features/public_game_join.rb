@@ -1,4 +1,5 @@
 require 'rails_helper'
+  include GamesHelper
 
   describe 'the joining/leaving a game proccess', type: :feature do
 
@@ -15,7 +16,7 @@ require 'rails_helper'
   end
 
   scenario 'game should be public' do
-    expect(Game.first.status).to eq('public')
+    expect(Game.first.is_game_private?(Game.first)).to eq('Public')
     expect(page).to have_content('Status: Not Attending')
   end
 
