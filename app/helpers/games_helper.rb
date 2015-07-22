@@ -8,10 +8,6 @@ module GamesHelper
   end
 
   def is_game_private?(game)
-    if game.private_game == true
-      "Private"
-    else
-      "Public"
-    end
+    game.private_game ? "Private" : "Public"
   end
 end
