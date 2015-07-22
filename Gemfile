@@ -51,5 +51,6 @@ group :development, :test do
   gem 'launchy'
   gem 'rake'
   gem 'twilio-ruby', '~> 3.12'
+  gem 'factory_girl_rails'
 end
 
