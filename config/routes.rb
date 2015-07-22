@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
 
   patch "/players/status" => "players#status", as: "status"
+
+  post '/invites' => 'users#send_text'
 end

@@ -50,5 +50,6 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rake'
+  gem 'twilio-ruby', '~> 3.12'
 end
 
