@@ -33,7 +33,7 @@ end
     start_time: Faker::Time.forward(1, :morning),
     end_time: Faker::Time.forward(1, :evening),
     location: Faker::Address.street_name,
-    status: "Public",
+    private_game: false,
     owner_id: Faker::Number.between(1,3),
     )
 end
@@ -44,7 +44,7 @@ end
     start_time: Faker::Time.forward(1, :morning),
     end_time: Faker::Time.forward(1, :evening),
     location: Faker::Address.street_name,
-    status: "Private",
+    private_game: true,
     owner_id: Faker::Number.between(1,3),
     )
 end
