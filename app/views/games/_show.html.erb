@@ -1,5 +1,5 @@
 <div class = "display-games">
-  <div> <%= game.status %> - <%= game.sport %></div>
+  <div> <%= is_game_private?(game) %> - <%= game.sport %></div>
   <div>Players Currently Attending: <%=Player.attending_count(game.id)%> </div>
   <div>Location: <%= link_to game.location, game_path(game)%></div>
   <div>Starts: <%= local_time(game.start_time) %></div>

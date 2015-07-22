@@ -5,7 +5,7 @@
     <div><%= f.text_field :location %></div>
     <div><%= f.datetime_field :start_time %></div>
     <div><%= f.datetime_field :end_time %>
-    <div><%= f.check_box :private %></div>
+    <div><%= f.check_box :private_game %></div>
     <div><%= label_tag :invites %></div>
     <div><%= text_area_tag :invites, "", options = {size: '50x10', placeholder: 'Enter usernames or emails here.'} %></div>
     <div><%= f.submit "Create Game", class: 'btn btn-default' %></div>
