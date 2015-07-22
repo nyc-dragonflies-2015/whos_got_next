@@ -24,6 +24,7 @@ class GamesController < ApplicationController
         message = Notification.game_invite_msg(user, @game)
         Notification.notify(user, message)
       end
+      @game.update(private_game: params[:game][:private_game])
       redirect_to game_path(@game)
     else
       render :new
