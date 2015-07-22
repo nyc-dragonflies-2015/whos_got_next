@@ -20,20 +20,42 @@ describe User do
   it { should validate_uniqueness_of(:username) }
   it { should validate_uniqueness_of(:email) }
 
-  it "#find_or_create_user_accounts returns an array of user accounts" do
-    user.save
-    accounts = User.find_or_create_user_accounts('mikeb, johndoe@gmail.com, janed')
-
-    expect(accounts.count).to eq(2)
+  describe "#full_name" do
+    it "should return a user's full name capitalized" do
+      expect(user.full_name).to eq('Mike B')
+    end
   end
 
-  it "#find_or_create_user_accounts create user accounts for emails" do
-    expect{
-      accounts = User.find_or_create_user_accounts('mikeb, johndoe@gmail.com, johndoe@gmail.com, janed')
-    }.to change(User,:count).by(1)
-  end
+  describe "#find_or_create_user_accounts" do
+    it "returns an array of user accounts" do
+      user.save
+      accounts = User.find_or_create_user_accounts('mikeb, johndoe@gmail.com, janed, 182-334-2891')
 
-  it "#full_name should return a user's full name capitalized" do
-    expect(user.full_name).to eq('Mike B')
+      expect(accounts.count).to eq(3)
+    end
+
+    it "should not create a new account if the email or username already exist" do
+      expect{
+        accounts = User.find_or_create_user_accounts('mikeb, mike@example.com')
+      }.not_to change(User, :count)
+    end
+
+    it "should not create a new account if the temporary phone number already exist" do
+      expect{
+        accounts = User.find_or_create_user_accounts('000-000-0000, 000-000-0000')
+      }.to change(User, :count).by(1)
+    end
+
+    it "should not create a new account if the username doesn't exist" do
+      expect{
+        accounts = User.find_or_create_user_accounts('JessicaP')
+      }.to_not change(User, :count)
+    end
+
+    it "should create a new account if the email doesn't exist" do
+      expect{
+        accounts = User.find_or_create_user_accounts('JohnS@example.com')
+      }.to change(User, :count).by(1)
+    end
   end
 end
