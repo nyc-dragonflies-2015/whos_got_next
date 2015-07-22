@@ -16,11 +16,16 @@ class User < ActiveRecord::Base
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
-  def self.find_or_create_user_accounts(username_or_email_list)
-    username_or_email_list.split(',').each_with_object([]) do |identifier, result|
-      identifier.strip!
+  def self.find_or_create_user_accounts(identifier_list)
+    identifier_list.split(',').each_with_object([]) do |identifier, result|
+      identifier.gsub!(/[\(\)-]/, '')
+      identifier.delete!(' ')
+      identifier_as_phone_number = Integer(identifier,10) rescue nil
+
       if identifier.include?('@')
         result << find_or_create_email(identifier)
+      elsif (identifier_as_phone_number)
+        result << find_or_create_phone(identifier_as_phone_number)
       else
         user = User.find_by(username: identifier)
         result << user unless user.nil?
@@ -52,5 +57,16 @@ class User < ActiveRecord::Base
     return "account1" if User.last.nil?
 
     return "account#{User.last.id + 1}"
+  end
+
+  def self.find_or_create_phone(phone)
+    user = User.find_by(phone_number: phone, first_name: "temporary", last_name: "account")
+
+    if user
+      return user
+    else
+      username = generate_temporary_username
+      return User.create(TEMPORARY_USER_CONFIGURATION.merge({username: username, email: "#{username}@example.com", phone_number: phone }))
+    end
   end
 end

@@ -20,6 +20,9 @@ class GamesController < ApplicationController
 
       users.each do |user|
         Player.create(user_id: user.id, game_id:  @game.id)
+
+        message = Notification.game_invite_msg(user, @game)
+        Notification.notify(user, message)
       end
       redirect_to game_path(@game)
     else
