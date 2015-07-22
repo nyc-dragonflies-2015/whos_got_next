@@ -1,10 +1,6 @@
 module GamesHelper
   def has_satisfactory_conditions?(game)
-    if game.still_active? && Game.max_players_allowed(game.id) && (game.private_game || game.invites.find_by(id: session[:user_id]))
-      return true
-    else
-      return false
-    end
+    game.still_active? && Game.max_players_allowed(game.id) && (game.private_game == false || game.invites.find_by(user_id: session[:user_id]))
   end
 
   def is_game_private?(game)
