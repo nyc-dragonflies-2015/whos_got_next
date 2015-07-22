@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-  describe 'the joining a game proccess', type: :feature do
+  describe 'the joining/leaving a game proccess', type: :feature do
 
   before :each do
     User.create(first_name: 'John', last_name: 'Doe', email: 'john@example.com', phone_number: '555-555-5555', password: '123456', username: 'johndoe')
@@ -17,17 +17,18 @@ require 'rails_helper'
   scenario 'game should be public' do
     expect(Game.first.status).to eq('public')
     expect(page).to have_content('Status: Not Attending')
-
   end
 
   scenario 'user can join' do
     click_button 'Join'
+    expect(Player.attending_count(Game.first)).to eq(1)
     expect(page).to have_content('Status: Attending')
   end
 
   scenario 'user can leave a game after joining' do
     click_button 'Join'
     click_button 'Leave'
+    expect(Player.attending_count(Game.first)).to eq(0)
     expect(page).to have_content('Status: Not Attending')
   end
 end
