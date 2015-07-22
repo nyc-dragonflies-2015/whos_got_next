@@ -17,7 +17,7 @@ class Game < ActiveRecord::Base
   def user_status(user_id)
     invite = self.invites.find_by(user_id: user_id)
 
-    if invite
+    if invite && invite.attending
       return 'Attending'
     else
       return 'Not Attending'
