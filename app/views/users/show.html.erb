@@ -14,12 +14,14 @@
       </div>
       <div class = "col-md-6">
         <h1 id ='profile-h2'>Current Events</h1>
-        <% @user.games.each do |game| %>
-          <% if has_satisfactory_conditions?(game) %>
-            <%= render partial: 'games/show', locals: {game: game} %>
-            <br>
+        <div class = 'fix-size'>
+          <% @user.games.each do |game| %>
+            <% if has_satisfactory_conditions?(game) %>
+              <%= render partial: 'games/show', locals: {game: game} %>
+              <br>
+            <%end%>
           <%end%>
-        <%end%>
+        </div>
       </div>
     </div>
   </div>
