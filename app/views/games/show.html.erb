@@ -26,9 +26,11 @@
     </div>
 
     <div class='col-md-6'>
-      <input id="autocomplete" class = 'auto-finish' placeholder="Enter the address"></input>
-      <input class = 'auto-finish btn-default' type="submit" onclick="geolocate()" value="Directions"></button>
-      <div id="googleMap" style="width:500px;height:380px;"></div>
+      <div class = 'alignment'>
+        <input id="autocomplete" class = 'auto-finish' placeholder="Enter the address"></input>
+        <input class = 'auto-finish btn-default' type="submit" onclick="geolocate()" value="Directions"></button>
+      </div>
+      <div id="googleMap" style="width:550px;height:400px;"></div>
       <form id="geolocator" onSubmit="geolocate()" data-remote="true">
       </form>
       <div class = 'mappy-map' id="map-canvas"></div>
