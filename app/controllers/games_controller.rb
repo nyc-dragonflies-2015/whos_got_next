@@ -16,11 +16,11 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     if @game.save
-      invites = User.find_or_create_user_accounts(String(params[:invites]))
+      users = User.find_or_create_user_accounts(String(params[:invites]))
 
-      invites.each { |player| Player.create(user_id: player.id, game_id:  @game.id) }
-      # user = User.find_by(id: session[:user_id])
-      # User.text(user.phone_number)
+      users.each do |user|
+        Player.create(user_id: user.id, game_id:  @game.id)
+      end
       redirect_to game_path(@game)
     else
       render :new
