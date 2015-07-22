@@ -21,7 +21,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
 # make app deploy to heroku cleanly
 gem 'rails_12factor', group: :production
-
+gem 'twilio-ruby', '~> 3.12'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -50,7 +50,6 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rake'
-  gem 'twilio-ruby', '~> 3.12'
   gem 'factory_girl_rails'
 end
 
