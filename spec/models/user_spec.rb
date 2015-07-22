@@ -27,11 +27,14 @@ describe User do
   end
 
   describe "#find_or_create_user_accounts" do
-    it "returns an array of user accounts" do
+    it "returns an array of users" do
       user.save
       accounts = User.find_or_create_user_accounts('mikeb, johndoe@gmail.com, janed, 182-334-2891')
 
-      expect(accounts.count).to eq(3)
+      expect(accounts.class).to eq(Array)
+      expect(accounts[0].class).to eq(User)
+      expect(accounts[1].class).to eq(User)
+      expect(accounts[2].class).to eq(User)
     end
 
     it "should not create a new account if the email or username already exist" do
