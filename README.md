@@ -1,4 +1,6 @@
-## Who's Got Next?
+# Who's Got Next?
+
+Who's Got Next is a web application that allows people to connect through sports pick-up games. Users can create   public or private games, and invite registered and non-registered players to attend, via SMS. Users can quickly    and easily join or leave public games, as well as private games they have been invited to. The application was     built using Rails. We used Twilio for sending game invites to players via SMS, and the Google Maps API for         directions.
 
 # Team Members: 
 
